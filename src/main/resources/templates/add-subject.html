@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Subject</title>
+</head>
+<body>
+
+<h1>Add Subject</h1>
+
+<form th:action="@{/subjects/add}"
+      th:object="${subject}"
+      method="post">
+
+    <label>Subject name:</label><br>
+    <input type="text" th:field="*{name}" required><br><br>
+
+    <label>Teacher name:</label><br>
+    <input type="text" th:field="*{teacherName}" required><br><br>
+
+    <button type="submit">Save</button>
+</form>
+
+<p>
+    <a th:href="@{/}">Back to journal</a>
+</p>
+
+</body>
+</html>

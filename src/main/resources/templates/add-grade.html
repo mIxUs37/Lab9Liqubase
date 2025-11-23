@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Grade</title>
+</head>
+<body>
+
+<h1>Add Grade</h1>
+
+<form th:action="@{/grades/add}"
+      th:object="${grade}"
+      method="post">
+
+  <label>Student:</label><br>
+  <select th:field="*{studentId}" required>
+    <option value="" disabled selected>Select student</option>
+    <option th:each="s : ${students}"
+            th:value="${s.id}"
+            th:text="${s.name}">
+    </option>
+  </select><br><br>
+
+  <label>Subject:</label><br>
+  <select th:field="*{subjectId}" required>
+    <option value="" disabled selected>Select subject</option>
+    <option th:each="sub : ${subjects}"
+            th:value="${sub.id}"
+            th:text="${sub.name}">
+    </option>
+  </select><br><br>
+
+  <label>Grade value:</label><br>
+  <input type="number" th:field="*{value}" required><br><br>
+
+  <label>Date:</label><br>
+  <input type="date" th:field="*{date}" required><br><br>
+
+  <button type="submit">Save</button>
+</form>
+
+<p>
+  <a th:href="@{/}">Back to journal</a>
+</p>
+
+</body>
+</html>
